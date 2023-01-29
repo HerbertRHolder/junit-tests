@@ -1,13 +1,18 @@
-package grades;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Student {
+    private long id;
     private String name = null;
-    private ArrayList<Double> grades = new ArrayList<>(Arrays.asList());
-    public Student(String n){
+    private ArrayList<Double> grades = new ArrayList<>();
+
+    public Student(String n,long ident){
         this.name = n;
+        this.id = ident;
+
     }
+    public long getId(){return this.id;}
     public String getName(){
         return this.name;
     }
@@ -21,33 +26,29 @@ public class Student {
         }
         return grade/this.grades.size();
     }
-    public void printAllGrades(){
-        System.out.println(this.name);
-        for (int j=0;j<this.getGrades().size();j++){
-            double g = this.getGrades().get(j);
-            System.out.println("Grade "+ (j+1) + ": " + g);
-        }
-    }
     public ArrayList<Double> getGrades(){
-        return grades;
+        return this.grades;
     }
 
 
 
     public static void main(String[] args) {
-        Student jim = new Student("jim");
-        Student jack = new Student("jack");
+        Student jim = new Student("jim",12312324);
+        Student jack = new Student("jack",2133545);
         jim.addGrade(85.0);
         jim.addGrade(70.0);
         jim.addGrade(95.0);
-        jim.printAllGrades();
-        System.out.println(jim.getGradeAverage());
+        jim.getGrades();
+        System.out.println("Grade AVG: " + jim.getGradeAverage());
 
         jack.addGrade(50.0);
         jack.addGrade(30.0);
         jack.addGrade(95.0);
-        jack.printAllGrades();
-        System.out.println(jack.getGradeAverage());
+        System.out.println(jack.getGrades().get(0));;
+        for (int i = 0; i < jack.getGrades().size(); i++) {
+            System.out.println("Jack Grade: "+(i+1)+" "+jack.getGrades().get(i));
+        }
+
 
 
 
